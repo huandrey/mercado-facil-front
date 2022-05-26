@@ -53,7 +53,7 @@ export const Container = styled.div`
 export const Title = styled.h1`
   font-size: 1.2rem;
   font-weight: 600;
-  color: #2563eb;
+  color: ${({ type }) => type === "success" ? '#2563eb' : 'red'};
   /* padding: 0 0 2rem 0; */
 `;
 

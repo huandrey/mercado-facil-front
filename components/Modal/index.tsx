@@ -3,6 +3,7 @@ import {
   Check,
   Cards,
   Receipt,
+  Warning,
 } from 'phosphor-react';
 import React, { ReactPortal } from 'react';
 import ReactDOM from 'react-dom';
@@ -44,6 +45,8 @@ export function Modal({
     
       case 'success':
         return <Check size={38} color="green" weight="bold" />;
+      case 'alert':
+        return <Warning size={38} color="red" weight="light" />
       default:
         return '';
     }
@@ -58,7 +61,7 @@ export function Modal({
             </ClosedButton>
             <Content align={align}>
               {chooseIcon(type)}
-              <Title>{title}</Title>
+              <Title type>{title}</Title>
             </Content>
             <Description>{subtitle}</Description>
             <br />

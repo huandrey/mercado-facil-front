@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import { useState } from 'react';
+import { Oval } from 'react-loader-spinner';
 import { Header } from '../../components/Header';
 import { Modal } from '../../components/Modal';
 import { createProduct } from '../../services/product';
@@ -7,6 +8,7 @@ import { cleanMoneyFormat, moneyFormatMask } from '../../utils/maskFunctions';
 
 const CreateProduct: NextPage = () => {
 
+  const [loading, setLoading] = useState(false);
   const [visible, setVisible] = useState(false);
   const [fields, setFields] = useState({
     name: '', //
@@ -16,6 +18,10 @@ const CreateProduct: NextPage = () => {
 
   function handleVisibility() {
     setVisible(prev => !prev);
+  }
+
+  function handleLoading() {
+    setLoading(prev => !prev);
   }
 
   function handleFields(event: React.ChangeEvent<HTMLInputElement>) {
@@ -31,6 +37,7 @@ const CreateProduct: NextPage = () => {
 
   async function handleCreateProduct(e) {
     e.preventDefault();
+    handleLoading()
     try {
       const response = await createProduct({ 
         ...fields, 
@@ -41,6 +48,7 @@ const CreateProduct: NextPage = () => {
     } catch (err) {
       console.log(err);
     }
+    handleLoading();
   }
 
   return (
@@ -91,7 +99,25 @@ const CreateProduct: NextPage = () => {
               value={moneyFormatMask(fields.preco)}
               className="w-full font-open-sans py-2 outline-transparent border-b-2 focus:border-blue-600 transition duration-500 linear " />
           </div>
-          <button type="submit" className="px-5 py-2 mt-4  bg-blue-600 hover:bg-blue-700 rounded-md text-white w-full">criar produto</button>
+          <button 
+            type="submit" 
+            className="flex justify-center px-5 py-2 mt-4  bg-blue-600 hover:bg-blue-700 rounded-md text-white w-full disabled:bg-slate-400"
+            disabled={loading}
+            > 
+              { loading 
+                ? 
+                <Oval
+                  ariaLabel="loading-indicator"
+                  height={18}
+                  width={18}
+                  strokeWidth={5}
+                  color="white"
+                  secondaryColor="#e9e9e9"
+                />
+                : 
+                'criar produto' 
+              }
+            </button>
         </form>
       </div>
     </div>
