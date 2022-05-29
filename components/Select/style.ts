@@ -11,21 +11,15 @@ export const SelectElement = styled.select`
   -moz-appearance: none;
   appearance: none;
   width: 100%;
-  ${({ small }) =>
-    small &&
-    `
-    width: 25%;
-  `}
   color: gray;
   border: 1px solid #d1d5db;
   box-sizing: border-box;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
   border-radius: 6px;
   padding: 0.5rem 0.8rem;
-  /* background-image: transparent url('./arrow.png') 95.5% 50% no-repeat; */
   font-size: 1rem;
   outline: transparent;
-  cursor: ${({ disabled }) => (disabled ? 'normal' : 'pointer')};
+  cursor: pointer;
   option {
     color: black;
     background: white;

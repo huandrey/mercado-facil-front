@@ -26,7 +26,7 @@ const Products: NextPage = () => {
   useEffect(() => {
     async function getProducts() {
       try {
-        const response = await listProducts();
+        const response = await listProducts(false);
 
         const responseFormatted = response.map((product) => {
         

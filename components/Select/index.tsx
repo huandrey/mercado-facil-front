@@ -2,9 +2,9 @@ import React from 'react';
 
 import { SelectElement } from './style';
 
-export function CustomSelect({ items, onChange, rest }: any) {
+export function CustomSelect({ items, onChange, name, rest }: any) {
   return (
-    <SelectElement onChange={onChange} {...rest}>
+    <SelectElement onChange={onChange} name={name} {...rest}>
       <option value="" selected disabled hidden>
         Selecione um produto
       </option>

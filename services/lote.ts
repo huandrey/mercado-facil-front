@@ -22,5 +22,9 @@ async function createLote(data: Lote) {
   return lote;
 }
 
+async function getLoteByProductId() {
+  
+}
+
 
 export { createLote };

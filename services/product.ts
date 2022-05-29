@@ -27,8 +27,8 @@ async function createProduct(data: Produto) {
   return product;
 }
 
-async function listProducts(): Promise<Product[]> {
-  const { data: products } = await api.get<ProductResponse>('/produtos/');
+async function listProducts(withLote: boolean) {
+  const { data: products } = await api.get<ProductResponse>(`/produtos/?with-lote=${withLote}`);
   return products;
 }
 

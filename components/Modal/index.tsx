@@ -61,7 +61,7 @@ export function Modal({
             </ClosedButton>
             <Content align={align}>
               {chooseIcon(type)}
-              <Title type>{title}</Title>
+              <Title type={type}>{title}</Title>
             </Content>
             <Description>{subtitle}</Description>
             <br />

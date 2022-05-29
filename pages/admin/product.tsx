@@ -5,9 +5,10 @@ import { Header } from '../../components/Header';
 import { Modal } from '../../components/Modal';
 import { createProduct } from '../../services/product';
 import { cleanMoneyFormat, moneyFormatMask } from '../../utils/maskFunctions';
+import { useRouter } from 'next/router'
 
 const CreateProduct: NextPage = () => {
-
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [visible, setVisible] = useState(false);
   const [fields, setFields] = useState({
@@ -61,7 +62,10 @@ const CreateProduct: NextPage = () => {
         type="success"
       >
         <button 
-          onClick={handleVisibility}
+          onClick={() => {
+            handleVisibility();
+            router.push('/');
+          }}          
           className="px-5 py-2 mt-4  bg-blue-600 hover:bg-blue-700 rounded-md text-white w-full"
         >
           voltar
